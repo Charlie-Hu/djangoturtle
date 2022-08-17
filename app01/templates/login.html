@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<h1>team turtle login</h1>
+
+
+<form method="post" action="/login/">
+
+    {% csrf_token %}
+    <input type="text" name="user" placeholder="account"><br><br>
+    <input type="password" name="pwd" placeholder="password"><br><br>
+    <input type="submit" value="Submit">
+    <span style="color: #ec41">{{ error_info }}</span>
+    <input type="button" onclick="window.location.href='../register'" value="Register">
+</form>
+
+
+
+<p>Click the "Submit" button, the identity information will be verified and the login operation will be performed.</p>
+
+</body>
+</html>
+

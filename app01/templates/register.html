@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1>register</H1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="user" placeholder="account"><br><br>
+    <span style="color: #ec41">{{ error_info }}</span>
+    <input type="password" name="pwd" placeholder="password"><br><br>
+    <span style="color: #ec41">{{ error_info }}</span>
+    <input type="submit" value="register">
+</form>
+</body>
+</html>
