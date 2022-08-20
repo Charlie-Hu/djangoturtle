@@ -4429,7 +4429,7 @@ tbody.collapse.show {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: inline-flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -4438,8 +4438,9 @@ tbody.collapse.show {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border: 2px solid rgba(0, 0, 0, 0.125);
+  border-radius: 40px;
+  width:30%;
 }
 
 .card > hr {
