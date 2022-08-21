@@ -1,18 +1,44 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static 'img/wbbackground.jpg' %}");
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
-<H1>register</H1>
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="user" placeholder="account"><br><br>
-    <span style="color: #ec41">{{ error_info }}</span>
-    <input type="password" name="pwd" placeholder="password"><br><br>
-    <span style="color: #ec41">{{ error_info }}</span>
-    <input type="submit" value="register">
+<div class="header">
+    <h1>Register</h1>
+</div>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="from_input">
+            <br>
+            <br>
+            <div>Account Number</div>
+            <input class="input_box" type="text" name="user" placeholder="Account"><br><br>
+            <span style="color: #ec41">{{ error_info }}</span>
+            <div>Password</div>
+            <input class="input_box" type="password" name="pwd" placeholder="Password"><br><br>
+            <span style="color: #ec41">{{ error_info }}</span>
+            <div>Emergency phone number</div>
+            <input class="input_box" type="tel" name="phone" placeholder="Emergence phone number"><br><br>
+            <span style="color: #ec41">{{ error_info }}</span>
+            <input class="box_button" type="submit" value="Register">
+        </div>
+</div>
+
 </form>
 </body>
 </html>

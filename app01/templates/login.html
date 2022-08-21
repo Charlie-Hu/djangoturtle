@@ -1,23 +1,43 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static 'img/wbbackground.jpg' %}");
+            background-size: cover;
+        }
+    </style>
+</head>
+
 <body>
+<div class="header">
+    <h1>Team Turtle Login</h1>
+</div>
+<div class="container">
+    <form method="post" action="/login/">
 
-<h1>team turtle login</h1>
-
-
-<form method="post" action="/login/">
-
-    {% csrf_token %}
-    <input type="text" name="user" placeholder="account"><br><br>
-    <input type="password" name="pwd" placeholder="password"><br><br>
-    <input type="submit" value="Submit">
-    <span style="color: #ec41">{{ error_info }}</span>
-    <input type="button" onclick="window.location.href='../register'" value="Register">
-</form>
-
-
-
-<p>Click the "Submit" button, the identity information will be verified and the login operation will be performed.</p>
+        {% csrf_token %}
+        <div class="from_input">
+            <br>
+            <br>
+            <div>Account Number:</div>
+            <input class="input_box" type="text" name="user" placeholder="account"><br><br>
+            <div>Password:</div>
+            <input class="input_box" type="password" name="pwd" placeholder="password"><br><br>
+            <input type="submit" value="Submit">
+            <input type="button" onclick="window.location.href='../register'" value="Register">
+            <div style="color: red">{{ error_info }}</div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

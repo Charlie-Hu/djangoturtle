@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login_register.css' %}">
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <style>
+        body {
+            background-image: url("{% static 'img/wbbackground.jpg' %}");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+<p class="container" style="font-size:20px">register successful <br>
+    <span id="sp">4</span> seconds should be waiting</p>
+<script>
+    onload = function () {
+        setInterval(go, 1000)
+    };
+    var x = 3;
+
+    function go() {
+
+        if (x >= 0) {
+            document.getElementById("sp").innerText = x;
+        } else {
+            location.href = "/main";
+        }
+        x--;
+    }
+</script>
+
+</body>
+</html>

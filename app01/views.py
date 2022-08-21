@@ -28,8 +28,7 @@ def register(request):
     pwd = request.POST.get("pwd")
 
     Userinfo.objects.create(name=user, password=pwd)
-    return HttpResponse('successful')
-    return redirect('/login')
+    return render(request, "Jump.html")
 
 
 def main(request):

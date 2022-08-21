@@ -1,7 +1,46 @@
-.picture{
-     : 100%;
+
+.picture {
+    max-width: 100%;
     width: 450px;
     height: 400px;
     overflow: hidden;
     text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.header_line {
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.header_line .left {
+    float: left;
+    color: #f7f7f7;
+}
+
+
+.header_line .right {
+    float: right;
+
+}
+
+.header_line .right a{
+    color: #f7f7f7;
+    line-height: 25px;
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 45px;
+
+
+}
+
+.header {
+    text-align: center;
+    color: #f7f7f7;
+    font-size: 75px;
 }
