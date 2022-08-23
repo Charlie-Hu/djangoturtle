@@ -27,7 +27,14 @@
 
 .header_line .right {
     float: right;
+}
 
+.header_line .right a{
+    color: #f7f7f7;
+    line-height: 25px;
+    display: inline-block;
+    font-size: 20px;
+    margin-right: 45px;
 }
 
 .header {

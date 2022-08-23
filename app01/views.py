@@ -31,6 +31,14 @@ def register(request):
     return render(request, "Jump.html")
 
 
+def jump(request):
+    return render(request, "jump.html")
+
+
 def main(request):
     return render(request, "main.html")
+
+
+def plan(request):
+    return render(request, "plan.html")
 
