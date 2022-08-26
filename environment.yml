@@ -1,4 +1,4 @@
-name: djangoturtle
+ename: djangoturtle
 channels:
   - defaults
 dependencies:
@@ -31,4 +31,4 @@ dependencies:
   - pip:
     - mysqlclient==2.1.1
     - pymysql==1.0.2
-prefix: /Users/huzheng/.conda/envs/djangoturtle
+prefix: /Users/huzheng/.conda/envs/djangoturtle/bin
