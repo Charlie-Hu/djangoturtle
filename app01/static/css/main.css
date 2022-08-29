@@ -1,19 +1,19 @@
 .container_main {
     text-align: center;
-	background-color: #ffffff;
-	border-radius: 20px;
-	border-style:solid;
-	border-color: #b9b4ae;
-	border-width: 5px;
-	width: 1000px;
-	height: 1000px;
-	margin: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+    background-color: #1c7430;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #b9b4ae;
+    border-width: 5px;
+    width: 400px;
+    margin: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
+
 .header_line {
     height: 60px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -29,7 +29,7 @@
     float: right;
 }
 
-.header_line .right a{
+.header_line .right a {
     color: #f7f7f7;
     line-height: 25px;
     display: inline-block;
@@ -41,6 +41,27 @@
     text-align: center;
     color: #f7f7f7;
     font-size: 75px;
-	margin-top:50px;
-	margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.from_input {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.left .more {
+    display: none;
+}
+
+.left:hover .more {
+    display: block;
+}
+
+.button{
+    float: right;
+}
+
+.button .icon{
+    width: 45px;
 }

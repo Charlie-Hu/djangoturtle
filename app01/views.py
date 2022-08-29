@@ -42,3 +42,4 @@ def main(request):
 def plan(request):
     return render(request, "plan.html")
 
+
