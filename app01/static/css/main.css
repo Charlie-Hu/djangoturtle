@@ -57,6 +57,7 @@
 
 .container .left .more {
     display: none;
+    position: fixed;
 }
 
 .container .left:hover .more {
