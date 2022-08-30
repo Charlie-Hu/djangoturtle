@@ -1,14 +1,11 @@
-console.log('21313')
-
 function Make_plan() {
     let add_form = document.getElementById('plan');
     let add_form1 = document.getElementById('plan1');
     let str = add_form1.innerHTML;
     let node = document.createElement('div')
     node.innerHTML = str
-    console.log(add_form)
-    console.log(add_form1)
     add_form.appendChild(node)
+
 
 }
 

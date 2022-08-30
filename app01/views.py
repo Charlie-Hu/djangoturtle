@@ -28,7 +28,7 @@ def register(request):
     pwd = request.POST.get("pwd")
 
     Userinfo.objects.create(name=user, password=pwd)
-    return render(request, "Jump.html")
+    return render(request, "jump.html")
 
 
 def jump(request):

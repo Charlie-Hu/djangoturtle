@@ -1,6 +1,6 @@
 .container_main {
     text-align: center;
-    background-color: #1c7430;
+    background-color: #ffffff;
     border-radius: 20px;
     border-style: solid;
     border-color: #b9b4ae;
@@ -63,5 +63,5 @@
 }
 
 .button .icon{
-    width: 45px;
+    width: 25px;
 }
