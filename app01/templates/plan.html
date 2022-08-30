@@ -44,9 +44,7 @@
 <div class="container_main">
     <form method="post" id="plan">
         {% csrf_token %}
-        <button class="button" onclick="Make_plan()">
-            <img class="icon" src="{% static 'img/add.jpg' %}" alt="add">
-        </button>
+        <input class="button" type="button" value="one more" onclick="Make_plan()">
         <br><br>
             <div class="from_input" id="plan1">
                 <span>Medicine Name: </span>
