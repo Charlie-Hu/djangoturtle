@@ -42,3 +42,11 @@
     color: #f7f7f7;
     font-size: 75px;
 }
+
+.left .more {
+    display: none;
+}
+
+.left:hover .more {
+    display: block;
+}
