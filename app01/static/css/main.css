@@ -1,3 +1,8 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
 .container_main {
     text-align: center;
     background-color: #ffffff;
@@ -50,11 +55,11 @@
     vertical-align: middle;
 }
 
-.left .more {
+.container .left .more {
     display: none;
 }
 
-.left:hover .more {
+.container .left:hover .more {
     display: block;
 }
 

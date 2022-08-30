@@ -29,7 +29,7 @@
 
 }
 
-.header_line .right a{
+.header_line .right a {
     color: #f7f7f7;
     line-height: 25px;
     display: inline-block;
@@ -43,10 +43,10 @@
     font-size: 75px;
 }
 
-.left .more {
+.container .left .more {
     display: none;
 }
 
-.left:hover .more {
+.container .left:hover .more {
     display: block;
 }
