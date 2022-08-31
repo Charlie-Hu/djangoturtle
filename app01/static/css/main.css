@@ -75,3 +75,8 @@
     right: 10px;
     height: 10px;
 }
+
+.delete_button{
+    float: right;
+    border-radius: 15px;
+}

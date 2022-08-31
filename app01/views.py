@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
-from app01.models import Userinfo
+from app01.models import Userinfo, Userplan
 # Create your views here.
 
 
@@ -36,10 +36,20 @@ def jump(request):
 
 
 def main(request):
+
     return render(request, "main.html")
 
 
 def plan(request):
-    return render(request, "plan.html")
+    if request.method == 'GET':
+        return render(request, "plan.html")
 
+    med_name = request.POST.get("med_name")
+    dosage = request.POST.get("dosage")
+    times = request.POST.get("times")
+    num_time = request.POST.get("num_time")
+    em_email = request.POST.get("email")
+
+    Userplan.objects.create(medicine_name=med_name, dosage=dosage, times=times, num_time=num_time, email=em_email)
+    return render(request, "main.html")
 

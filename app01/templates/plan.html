@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plan_all.js' %}"></script>
 
-    <script src="../static/js/plan.js"></script>
     <style>
         body {
             background-image: url("{% static 'img/wbbackground.jpg' %}");
@@ -44,30 +44,34 @@
 <div class="container_main">
     <form method="post" id="plan">
         {% csrf_token %}
-        <input class="button" type="button" value="one more" onclick="Make_plan()">
+
         <br><br>
-            <div class="from_input" id="plan1">
-                <span>Medicine Name: </span>
-                <input type="text" placeholder="name">
-                <br>
-                <br>
-                <span>Medicine Dosage: </span>
-                <input type="text" placeholder="dosage">
-                <br>
-                <br>
-                <span>number of times: </span>
-                <input type="number" id="get_time" min="1" max="5" onchange="times()"/>
-                <div id="dync"></div>
-                <br>
-                <br>
-                <span>Email: </span>
-                <input type="Email" placeholder="email">
-                <br>
-                <br>
-                <HR width=300 color=#987cb9 SIZE=1>
-            </div>
+        <div class="from_input" id="plan1">
+            <span>Medicine Name: </span>
+            <input type="text" placeholder="name" name="med_name">
+            <br>
+            <br>
+            <span>Medicine Dosage: </span>
+            <input type="text" placeholder="dosage" name="dosage">
+            <br>
+            <br>
+            <span>number of times: </span>
+            <input type="number" id="get_time" min="1" max="5" name="times" onchange="time_maker()"/>
+            <div style="color: green">(should be 1-5)</div>
+            <div id="dync"></div>
+            <br>
+            <br>
+            <span>Emergency Email: </span>
+            <input type="Email" name="email" placeholder="email">
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <HR width=300 color=#b9b4ae>
         <div class="form_submit">
-            <input type="submit" value="save">
+            <input class="button" type="button" value="one more" onclick="Make_plan()">
+            <input class="button" type="submit" value="save">
         </div>
     </form>
 </div>
