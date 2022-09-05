@@ -75,4 +75,4 @@ def plan(request):
     em_email = request.POST.get("email")
     Userplan.objects.create(name=username, medicine_name=med_name, dosage=dosage, times=times, num_time=num_time,
                             email=em_email)
-    return render(request, "main.html")
+    return redirect("/main/")
