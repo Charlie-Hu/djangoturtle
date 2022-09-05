@@ -32,6 +32,7 @@
 
 
         <div class="right">
+            <div class="user_tag"><span>User: </span> {{ request.user }}</div>
             <a href="/login/">Log out</a>
         </div>
         <div style="clear: both"></div>
@@ -41,6 +42,7 @@
 <div class="header">
     <h1>start your plan</h1>
 </div>
+
 <div class="container_main">
     <form method="post" id="plan">
         {% csrf_token %}
@@ -70,11 +72,15 @@
         <br>
         <HR width=300 color=#b9b4ae>
         <div class="form_submit">
-            <input class="button" type="button" value="one more" onclick="Make_plan()">
+            <input class="button" type="submit" value="one more" onclick="javascript:window.
+    location.href= '/plan/'">
             <input class="button" type="submit" value="save">
         </div>
     </form>
+
 </div>
+    <button class="btn btn-secondary" style="float: right; margin-right:30%" onclick="javascript:window.
+    location.href= '/main/'">cancel</button>
 
 </body>
 </html>

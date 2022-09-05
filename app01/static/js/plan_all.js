@@ -1,3 +1,4 @@
+/* one more button-drop down windows
 function Make_plan() {
     let div_plan = document.getElementById('plan');
     let add_form = document.getElementById('plan1');
@@ -25,20 +26,23 @@ function Make_plan() {
     node.appendChild(HR)
     div_plan.appendChild(node)
 }
+*/
+/* delete div
 function Delete_plan() {
     let del_form = document.getElementById('delete');
     del_form.parentElement.remove()
 }
+*/
 
 function time_maker() {
     let n = document.getElementById('get_time').value;
     let dync = document.getElementById('dync')
-    dync.innerHTML=''
+    dync.innerHTML = ''
     //let plan1 = document.getElementById('plan1')
     //let str = plan1.innerHTML;
     let tpl = "";
     for (let i = 0; i < n; i++) {
-        tpl += `<div class="inpIte"><span>times${i+1}: </span><input type="time" name="num_time"/></div>`
+        tpl += `<div class="inpIte"><span>times${i + 1}: </span><input type="time" name=num_time${i}/></div>`
     }
     dync.innerHTML = tpl
 }

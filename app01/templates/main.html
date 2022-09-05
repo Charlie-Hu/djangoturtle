@@ -30,7 +30,8 @@
 
 
         <div class="right">
-            <a href="">Log out</a>
+            <div class="user_tag"><span>User: </span> {{ request.user }}</div>
+            <a href="/logout/">Log out</a>
         </div>
         <div style="clear: both"></div>
     </div>
@@ -39,9 +40,33 @@
 <div class="header">
     <h1>Your Plan</h1>
 </div>
-<div class="container_main">
-    <a href="/plan"><button type="button" class="btn-block">Create your plan</a>
+<div class="container_main" style="width: 900px">
+    <a href="/plan">
+        <button type="button" class="btn-block">Create your plan</button>
+    </a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Medicine Name</th>
+            <th scope="col">dosage</th>
+            <th scope="col">Number Of Times</th>
+            <th scope="col">Time</th>
+            <th scope="col">Emergency Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for dic in user_plan %}
+            <tr>
+                <td>{{ dic.medicine_name }}</td>
+                <td>{{ dic.dosage }}</td>
+                <td>{{ dic.times }}</td>
+                <td>{{ dic.num_time}}</td>
+                <td>{{ dic.email }}</td>
+            </tr>
+            </tbody>
 
+        {% endfor %}
+    </table>
 
 
 </div>
