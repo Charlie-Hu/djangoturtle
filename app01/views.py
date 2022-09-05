@@ -26,28 +26,25 @@ def log_in(request):
 
 
 def log_out(request):
-        logout(request)
-        return render(request, 'login.html')
+    logout(request)
+    return render(request, 'login.html')
 
 
 def register(request):
-    state = None
     if request.method == 'GET':
-        content = {
-            'state': state,
-            'user': None,
-        }
-        return render(request, "register.html", content)
+        return render(request, "register.html")
     password = request.POST.get('pwd')
-    username = request.POST.get('user')
+    print('password:'+password+'.')
     email = request.POST.get('email')
-    if User.objects.filter(username=username):
-        state = 'user_exist'
+    username = request.POST.get('user')
+    if password is None or email is None:
+        return render(request, "register.html", {'state1': 'password or email cant be empty'})
+    elif User.objects.filter(username=username):
+        return render(request, "register.html", {'state2': 'user_exist'})
     else:
         new_user = User.objects.create_user(username=username, password=password, email=email)
         new_user.save()
-
-    return render(request, "jump.html")
+        return render(request, "jump.html")
 
 
 def jump(request):
