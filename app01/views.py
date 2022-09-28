@@ -21,7 +21,7 @@ def log_in(request):
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
-        return render(request, 'main.html')
+        return redirect('/main/')
     return render(request, 'login.html', {"error_info": "invalid username or password"})
 
 
@@ -53,9 +53,9 @@ def jump(request):
 
 @login_required
 def main(request):
-    user_plan = Userplan.objects.filter(name=request.user.username).values()
-    print(user_plan)
-    return render(request, "main.html", {"user_plan": user_plan})
+    if request.method == 'GET':
+        user_plan = Userplan.objects.filter(name=request.user.username).values()
+        return render(request, "main.html", {"user_plan": user_plan})
 
 
 @login_required
@@ -69,9 +69,7 @@ def plan(request):
     num_time = list()
     for i in range(0, int(times)):
         per_num_time = request.POST.get('num_time{num}'.format(num=i))
-        print(per_num_time)
         num_time.append(per_num_time)
-    print(num_time)
     em_email = request.POST.get("email")
     Userplan.objects.create(name=username, medicine_name=med_name, dosage=dosage, times=times, num_time=num_time,
                             email=em_email)
