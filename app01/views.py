@@ -4,6 +4,7 @@ from app01.models import Userplan
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -34,7 +35,7 @@ def register(request):
     if request.method == 'GET':
         return render(request, "register.html")
     password = request.POST.get('pwd')
-    print('password:'+password+'.')
+    print('password:' + password + '.')
     email = request.POST.get('email')
     username = request.POST.get('user')
     if password is None or email is None:
@@ -56,6 +57,15 @@ def main(request):
     if request.method == 'GET':
         user_plan = Userplan.objects.filter(name=request.user.username).values()
         return render(request, "main.html", {"user_plan": user_plan})
+
+
+@csrf_exempt
+@login_required
+def plan_delete(request):
+    items_to_delete = request.GET.get('id')
+    Userplan.objects.filter(id=items_to_delete).delete()
+    print('1')
+    return HttpResponse('delete successful')
 
 
 @login_required
