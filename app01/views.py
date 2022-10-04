@@ -9,8 +9,12 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.views import APIView
 from app01.serializer import HardwareDataSerializer
+from django.core.mail import send_mail
+import time
+
 
 # Create your views here.
+from djangoturtle import settings
 
 
 def index(request):
@@ -90,10 +94,29 @@ def plan(request):
     return redirect("/main/")
 
 
-
 class Hardware_View(APIView):
     def get(self, request, *args, **kwargs):
         queryset = Userplan.objects.all()
         ser = HardwareDataSerializer(instance=queryset, many=True)
-        return Response(ser.data)
+        fl_data = dict()
+        for item in ser.data:
+            if item.get("name") not in fl_data:
+                fl_data[item.get("name")] = list()
+            fl_data[item.get("name")].append(item)
+        return Response(fl_data)
 
+@csrf_exempt
+def send_email(request):
+    medicine_status = request.POST.get("medicine_status")
+    print(type(medicine_status))
+    em_email = request.POST.get("b_email")
+    if medicine_status == '1':
+        send_mail(
+            'Emergency',
+            'plz take your medicine.',
+            settings.EMAIL_HOST_USER,
+            [em_email],
+            fail_silently=False,
+        )
+        return HttpResponse('send email')
+    return HttpResponse('The medicine has been taken away')

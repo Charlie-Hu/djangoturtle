@@ -27,5 +27,6 @@ urlpatterns = [
     path('plan/', views.plan),
     path('logout/', views.log_out),
     path('delete/', views.plan_delete, name='delete'),
-    path('hardware/', views.Hardware_View.as_view())
+    path('hardware/', views.Hardware_View.as_view()),
+    path('send_email/', views.send_email)
 ]
