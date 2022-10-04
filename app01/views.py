@@ -1,11 +1,14 @@
 from django.http import response, HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect
+from rest_framework.response import Response
+
 from app01.models import Userplan
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-
+from rest_framework.views import APIView
+from app01.serializer import HardwareDataSerializer
 
 # Create your views here.
 
@@ -85,3 +88,12 @@ def plan(request):
     Userplan.objects.create(name=username, medicine_name=med_name, dosage=dosage, times=times, num_time=new_time,
                             email=em_email)
     return redirect("/main/")
+
+
+
+class Hardware_View(APIView):
+    def get(self, request, *args, **kwargs):
+        queryset = Userplan.objects.all()
+        ser = HardwareDataSerializer(instance=queryset, many=True)
+        return Response(ser.data)
+

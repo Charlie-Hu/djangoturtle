@@ -26,5 +26,6 @@ urlpatterns = [
     path('jump/', views.jump),
     path('plan/', views.plan),
     path('logout/', views.log_out),
-    path('delete/', views.plan_delete, name='delete')
+    path('delete/', views.plan_delete, name='delete'),
+    path('hardware/', views.Hardware_View.as_view())
 ]
