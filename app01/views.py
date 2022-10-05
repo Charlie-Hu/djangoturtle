@@ -12,7 +12,6 @@ from app01.serializer import HardwareDataSerializer
 from django.core.mail import send_mail
 import time
 
-
 # Create your views here.
 from djangoturtle import settings
 
@@ -95,15 +94,24 @@ def plan(request):
 
 
 class Hardware_View(APIView):
+
     def get(self, request, *args, **kwargs):
         queryset = Userplan.objects.all()
+        username = request.POST.get('username')
+        psw = request.POST.get('password')
+        user = authenticate(username=username, password=psw)
+        print(psw)
         ser = HardwareDataSerializer(instance=queryset, many=True)
         fl_data = dict()
-        for item in ser.data:
-            if item.get("name") not in fl_data:
-                fl_data[item.get("name")] = list()
-            fl_data[item.get("name")].append(item)
-        return Response(fl_data)
+        if user is not None:
+            for item in ser.data:
+                if username == item.get("name"):
+                    if item.get("name") not in fl_data:
+                        fl_data[item.get("name")] = list()
+                    fl_data[item.get("name")].append(item)
+            return Response(fl_data)
+        return HttpResponse('invalid username or password')
+
 
 @csrf_exempt
 def send_email(request):
