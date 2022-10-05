@@ -41,14 +41,11 @@ def register(request):
     if request.method == 'GET':
         return render(request, "register.html")
     password = request.POST.get('pwd')
-    print('password:' + password + '.')
     email = request.POST.get('email')
     username = request.POST.get('user')
-    if password is None or email is None:
-        try:
-            return render(request, "register.html", {'state1': 'password or email cant be empty'})
-        except(ValueError):
-            return render(request, "register.html", {'state1': 'password or email cant be empty'})
+    # print(password)
+    if len(password) < 1 or len(email) < 1 or len(username) < 1:
+        return render(request, "register.html", {'state1': 'input detail can not be empty'})
     elif User.objects.filter(username=username):
         return render(request, "register.html", {'state2': 'user_exist'})
     else:
