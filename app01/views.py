@@ -115,9 +115,9 @@ class Hardware_View(APIView):
 
 @csrf_exempt
 def send_email(request):
-    medicine_status = request.POST.get("medicine_status")
+    medicine_status = request.GET.get("medicine_status")
     print(type(medicine_status))
-    em_email = request.POST.get("b_email")
+    em_email = request.GET.get("b_email")
     if medicine_status == '1':
         send_mail(
             'Emergency',
