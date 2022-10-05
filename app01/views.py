@@ -44,7 +44,7 @@ def register(request):
     print('password:' + password + '.')
     email = request.POST.get('email')
     username = request.POST.get('user')
-    if password is None or email is None:
+    if password is None or email is None or username is None:
         return render(request, "register.html", {'state1': 'password or email cant be empty'})
     elif User.objects.filter(username=username):
         return render(request, "register.html", {'state2': 'user_exist'})
@@ -97,10 +97,10 @@ class Hardware_View(APIView):
 
     def get(self, request, *args, **kwargs):
         queryset = Userplan.objects.all()
-        username = request.POST.get('username')
-        psw = request.POST.get('password')
+        username = request.GET.get('username')
+        psw = request.GET.get('password')
         user = authenticate(username=username, password=psw)
-        print(psw)
+        print(psw, username)
         ser = HardwareDataSerializer(instance=queryset, many=True)
         fl_data = dict()
         if user is not None:
