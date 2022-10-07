@@ -139,4 +139,5 @@ def send_email(request):
             [self_email],
             fail_silently=False,
         )
+        return HttpResponse('send email')
     return HttpResponse('unknown status.')
