@@ -100,6 +100,7 @@ class Hardware_View(APIView):
         username = request.GET.get('username')
         psw = request.GET.get('password')
         user = authenticate(username=username, password=psw)
+        self_email = User.objects.filter(username=user).values("email").first()
         print(psw, username)
         ser = HardwareDataSerializer(instance=queryset, many=True)
         fl_data = dict()
@@ -108,7 +109,9 @@ class Hardware_View(APIView):
                 if username == item.get("name"):
                     if item.get("name") not in fl_data:
                         fl_data[item.get("name")] = list()
+                        fl_data["self_email"] = self_email["email"]
                     fl_data[item.get("name")].append(item)
+
             return Response(fl_data)
         return HttpResponse('invalid username or password')
 
@@ -118,13 +121,22 @@ def send_email(request):
     medicine_status = request.GET.get("medicine_status")
     print(type(medicine_status))
     em_email = request.GET.get("b_email")
+    self_email = request.GET.get("s_email")
     if medicine_status == '1':
         send_mail(
             'Emergency',
-            'plz take your medicine.',
+            'Please check senior status.',
             settings.EMAIL_HOST_USER,
             [em_email],
             fail_silently=False,
         )
         return HttpResponse('send email')
-    return HttpResponse('The medicine has been taken away')
+    elif medicine_status == '0':
+        send_mail(
+            'Notice',
+            'Please take your medication on time.',
+            settings.EMAIL_HOST_USER,
+            [self_email],
+            fail_silently=False,
+        )
+    return HttpResponse('unknown status.')
