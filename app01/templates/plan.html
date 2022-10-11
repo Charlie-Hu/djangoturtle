@@ -59,7 +59,7 @@
             <br>
             <br>
             <span>number of times: </span>
-            <input type="number" id="get_time" min="1" max="5" name="times" onchange="time_maker()"/>
+            <input type="number" id="get_time" min="1" max="5" name="times" value="1" onchange="time_maker()"/>
             <div style="color: green">(should be 1-5)</div>
             <div id="dync"></div>
             <br>
@@ -72,6 +72,7 @@
         <br>
         <br>
         <HR width=300 color=#b9b4ae>
+        <span style="color: red">{{ state1 }}</span>
         <div class="form_submit">
             <input class="button" type="submit" value="save">
         </div>

@@ -86,8 +86,11 @@ def plan(request):
     for i in range(0, int(times)):
         per_num_time = request.POST.get('num_time{num}'.format(num=i))
         num_time.append(per_num_time)
-    new_time = ',  '.join(num_time)
+
     em_email = request.POST.get("email")
+    if len(med_name) < 1 or len(dosage) < 1 or len(times) < 1 or len(num_time) < 1:
+        return render(request, "plan.html", {"state1": "input detail can not be empty"})
+    new_time = ',  '.join(num_time)
     Userplan.objects.create(name=username, medicine_name=med_name, dosage=dosage, times=times, num_time=new_time,
                             email=em_email)
     return redirect("/main/")
