@@ -50,17 +50,17 @@
 
         <br><br>
         <div class="from_input" id="plan1">
-            <span>Medicine Name: </span>
-            <input type="text" placeholder="name" name="med_name">
+            <span>Medication Details: </span>
+            <input type="text" placeholder="name" name="med_name" value="pill a">
             <br>
             <br>
-            <span>Medicine Dosage: </span>
-            <input type="text" placeholder="dosage" name="dosage">
+            <span>Medicine strength(mg): </span>
+            <input type="number" placeholder="dosage" name="dosage" value="0">
             <br>
             <br>
-            <span>number of times: </span>
-            <input type="number" id="get_time" min="1" max="5" name="times" value="1" onchange="time_maker()"/>
-            <div style="color: green">(should be 1-5)</div>
+            <span>Frequency per day: </span>
+            <input type="range" id="get_time" min="1" max="5" name="times" value="1" onchange="time_maker()"/>
+            <div style="color: green">(max 5)</div>
             <div id="dync"></div>
             <br>
             <br>
