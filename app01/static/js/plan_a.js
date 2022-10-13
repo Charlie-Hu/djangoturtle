@@ -42,7 +42,8 @@ function time_maker() {
     //let str = plan1.innerHTML;
     let tpl = "";
     for (let i = 0; i < n; i++) {
-        tpl += `<div class="inpIte"><span>Scheduled times ${i + 1}: </span><input type="time" name=num_time${i}"></div>`
+        tpl += `<div class="inpIte"><span>Scheduled times ${i + 1}: </span><input type="time" name="num_time${i}"></div>`
+        console.log(tpl)
     }
     dync.innerHTML = tpl
 }

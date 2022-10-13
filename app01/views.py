@@ -51,27 +51,30 @@ def register(request):
     else:
         new_user = User.objects.create_user(username=username, password=password, email=email)
         new_user.save()
-        return render(request, "jump.html")
+        return redirect("/jump/")
 
 
 def jump(request):
     return render(request, "jump.html")
 
 
-@login_required
-def main(request):
-    if request.method == 'GET':
-        user_plan = Userplan.objects.filter(name=request.user.username).values()
-        return render(request, "main.html", {"user_plan": user_plan})
-
-
 @csrf_exempt
 @login_required
-def plan_delete(request):
-    items_to_delete = request.GET.get('id')
-    Userplan.objects.filter(id=items_to_delete).delete()
-    print('1')
-    return HttpResponse('delete successful')
+def main(request):
+    if request.method == 'POST':
+        items_to_delete = request.POST.get('id')
+        Userplan.objects.filter(id=items_to_delete).delete()
+    user_plan = Userplan.objects.filter(name=request.user.username).values()
+    return render(request, "main.html", {"user_plan": user_plan})
+
+
+# @csrf_exempt
+# @login_required
+# def plan_delete(request):
+#     items_to_delete = request.GET.get('id')
+#     Userplan.objects.filter(id=items_to_delete).delete()
+#     # print('1')
+#     return HttpResponse('delete successful')
 
 
 @login_required
@@ -83,12 +86,13 @@ def plan(request):
     dosage = request.POST.get("dosage")
     times = request.POST.get("times")
     num_time = list()
-    for i in range(0, int(times)):
+    for i in range(int(times)):
         per_num_time = request.POST.get('num_time{num}'.format(num=i))
         num_time.append(per_num_time)
     em_email = request.POST.get("email")
-    print(len(num_time))
-    if med_name is None or dosage is None or float(dosage) < 0 or times is None or num_time[0] is None or em_email is None:
+    # print(num_time[0])
+    if med_name is None or dosage is None or float(dosage) < 0 or times is None or num_time[
+        0] is None or em_email is None:
         return render(request, "plan.html", {"state1": "input detail can not be empty"})
     new_time = ',  '.join(num_time)
     Userplan.objects.create(name=username, medicine_name=med_name, dosage=dosage, times=times, num_time=new_time,

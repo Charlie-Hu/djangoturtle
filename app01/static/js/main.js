@@ -2,8 +2,8 @@ function delete_plan() {
     let id = document.getElementById('del').value;
     console.log(id)
     $.ajax({
-        type: 'GET',
-        url: '/delete/',
+        type: 'POST',
+        url: '/main/',
         data: {
             'id': id
         },
