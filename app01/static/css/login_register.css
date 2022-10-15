@@ -9,10 +9,9 @@
 	height: 470px;
 	margin: auto;
 	position: absolute;
-	top: 0;
+	top: 30%;
 	left: 0;
 	right: 0;
-	bottom: 0;
 }
 
 .from_input {
@@ -22,6 +21,7 @@
 
 .header h1{
     margin-top: 100px;
+	margin-bottom: 30px;
     text-align: center;
     color: #f7f7f7;
     font-size: 70px;
